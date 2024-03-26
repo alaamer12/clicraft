@@ -1,0 +1,15 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.3.0
+    hooks:
+      #    - id: check-yaml
+#      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      #    - id: mixed-line-ending
+      #    - id: check-executables-have-shebangs
+      #    - id: check-merge-conflict
+      - id: check-symlinks
+      - id: check-case-conflict
+      - id: requirements-txt-fixer
+      - id: name-tests-test
+      - id: check-added-large-files
