@@ -8,7 +8,33 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
+typer = "^0.11.0"
+rich = "^13.7.1"
+inquirerpy = "^0.3.4"
 
+
+
+[tool.towncrier]
+directory = "changes"
+# The name of your Python package
+package = "myproject"
+# The path to your Python package.
+# If your package lives in 'src/myproject/', it must be 'src',
+# but if you don't keep your code in a 'src' dir, remove the
+# config option
+package_dir = "src"
+# Where you want your news files to come out. This can be .rst
+# or .md, towncrier's default template works with both.
+filename = "NEWS.rst"
+
+[tool.poetry.group.dev.dependencies]
+tox = "^4.14.2"
+pytest = "^8.1.1"
+pre-commit = "^3.7.0"
+poetry-plugin-export = "^1.7.1"
+bandit = "^1.7.8"
+safety = "^3.1.0"
+towncrier = "^23.11.0"
 
 [build-system]
 requires = ["poetry-core"]

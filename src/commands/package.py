@@ -1,8 +1,6 @@
 from base_command import ICommand
-from dataclasses import dataclass
 
-# @dataclass
-class Create(ICommand):
+class Package(ICommand):
 
     def __init__(self, package_manager, docker_it):
         super().__init__(docker_it)

@@ -1,16 +1,28 @@
-# This is a sample Python script.
+import sys
+import traceback
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+class CustomError(Exception):
+    def __init__(self, message="An error occurred", *args):
+        super().__init__(message, *args)
+        self.notes = []
 
+    def add_note(self, note):
+        self.notes.append(note)
+        return self.notes
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+    def with_base_traceback(self):
+        return self.with_traceback(sys.exc_info()[2])
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+try:
+    raise ValueError
+except ValueError:
+    c = CustomError()
+    c_n = c.add_note("this is a note")
+    c_bt = c.with_base_traceback()
+    print(c_n, c_bt)
+    print(sys.exc_info())
+    for _ in range(5):
+        try:
+            print(sys.exc_info()[_])
+        except IndexError:
+            continue
